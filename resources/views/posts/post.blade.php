@@ -1,14 +1,21 @@
 @extends('layout')
 @section('title', $post['title'])
 @section('style')
+    <link rel='stylesheet' href='{{ asset('vendor/laraberg/css/laraberg.css' )}}'>
 @endsection
 @section('content')
-    <div class="ui segment">
-        <h1 class="ui brown header">{{ $post['title'] }}</h1>
-        <p>Created at: {{ $post['created_at'] }}</p>
-        <p>Last Updated at: {{ $post['updated_at'] }}</p>
-        <div class="ui raised segment">
+    <div class='uk-card uk-card-default uk-margin-top uk-margin'>
+        <div class='uk-card-header'>
+            <h3 class='uk-card-title uk-margin-remove-bottom'>{{ $post['title'] }}</h3>
+            <p class='uk-text-meta uk-margin-remove-top'>
+                <time datetime='{{ $post['created_at'] }}'>{{ $post['created_at'] }}</time>
+            </p>
+        </div>
+        <div class='uk-card-body'>
             {!! $post['laraberg'] !!}
+        </div>
+        <div class='uk-card-footer'>
+            <p class='uk-text-meta'>Last Updated at: {{ $post['updated_at'] }}</p>
         </div>
     </div>
 @endsection

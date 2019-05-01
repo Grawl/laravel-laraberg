@@ -1,18 +1,23 @@
 @extends('layout')
 @section('title', 'Posts')
-@section('menu.posts', 'active')
+@section('menu.posts', 'uk-active')
 @section('style')
 @endsection
 @section('content')
-    <div class="ui segment">
-        @foreach($posts as $post)
-            <div class="ui raised segment">
-                <a href="{{ route('post', ['id' => $post['id']]) }}" class="ui blue header">
-                    {{ $post['title'] }}
-                </a>
-                <p>Created at: {{ $post['created_at'] }}</p>
-            </div>
-        @endforeach
+    <div class='uk-margin uk-margin-remove-top'>
+        <div class='uk-grid uk-grid-small uk-child-width-1-3@l uk-child-width-1-2@m'>
+            @foreach($posts as $post)
+                <div class='uk-grid-margin'>
+                    <a
+                        href="{{ route('post', ['id' => $post['id']]) }}"
+                        class='uk-card uk-card-default uk-card-body uk-card-hover uk-display-block'
+                    >
+                        <div class='uk-card-badge uk-label'>{{ $post['created_at'] }}</div>
+                        <h3 class='uk-card-title'>{{ $post['title'] }}</h3>
+                    </a>
+                </div>
+            @endforeach
+        </div>
     </div>
 @endsection
 @section('script')
